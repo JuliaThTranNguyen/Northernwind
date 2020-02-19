@@ -36,21 +36,30 @@ keytool -genkeypair -alias name_1 -keyalg RSA -keysize 2048 -storetype PKCS12 -k
 ### Step 6: *Enable HTTPS, by adding into application.properties:*
 
 
-  *#The format used for the keystore. It could be set to JKS in case it is a JKS file*
-  *# server.ssl.key-store-type=PKCS12*
-  *# The path to the keystore containing the certificate*
-  *server.ssl.key-store=classpath:keystore/name_2.p12*
-  *# The password used to generate the certificate*
-  *server.ssl.key-store-password=//your_passwrd*
-  *# The alias mapped to the certificate*
-  *server.ssl.key-alias=name_1*
-  *security.require-ssl=true*
+        #The format used for the keystore. It could be set to JKS in case it is a JKS file
+
+        # server.ssl.key-store-type=PKCS12
+
+        # The path to the keystore containing the certificate
+
+        server.ssl.key-store=classpath:keystore/name_2.p12
+
+        # The password used to generate the certificate
+
+        server.ssl.key-store-password=//your_passwrd
+
+        # The alias mapped to the certificate*
+
+        server.ssl.key-alias=name_1
+
+        security.require-ssl=true
 
 ### Step 7: *Create a file WebSecurityConfig.java for authentication and adding these underneath lines to application.properties:*
 
-    *spring.ldap.embedded.ldif=classpath:test-server.ldif*
-    *spring.ldap.embedded.base-dn=dc=springframework,dc=org*
-    *spring.ldap.embedded.port=8389*
+
+    spring.ldap.embedded.ldif=classpath:test-server.ldif
+    spring.ldap.embedded.base-dn=dc=springframework,dc=org
+    spring.ldap.embedded.port=8389
 
 
 ### Step 8: *Run the project by using command: mvn package:*
